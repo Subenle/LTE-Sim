@@ -29,6 +29,7 @@
 #include "../protocolStack/mac/packet-scheduler/dl-pf-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/dl-mlwdf-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/dl-exp-packet-scheduler.h"
+#include "../protocolStack/mac/packet-scheduler/dl-mohapf-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/dl-fls-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/exp-rule-downlink-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/log-rule-downlink-packet-scheduler.h"
@@ -339,6 +340,12 @@ ENodeB::SetDLScheduler (ENodeB::DLSchedulerType type)
       	scheduler->SetMacEntity (mac);
       	mac->SetDownlinkPacketScheduler (scheduler);
 		  break;
+
+      case ENodeB::DLScheduler_TYPE_MOHAPF:
+        scheduler = new  DL_MOHAPF_PacketScheduler ();
+        scheduler->SetMacEntity (mac);
+        mac->SetDownlinkPacketScheduler (scheduler);
+      break;
 
 	  default:
 	    std::cout << "ERROR: invalid scheduler type" << std::endl;
