@@ -32,7 +32,7 @@
 #include "../../../protocolStack/mac/AMCModule.h"
 #include "../../../phy/lte-phy.h"
 #include "../../../core/spectrum/bandwidth-manager.h"
-#include "../../../flows/QoS/QoSForEXP.h"
+#include "../../../flows/QoS/QoSForMOHAPF.h"
 #include "../../../flows/MacQueue.h"
 
 DL_MOHAPF_PacketScheduler::DL_MOHAPF_PacketScheduler()
@@ -93,14 +93,14 @@ DL_MOHAPF_PacketScheduler::ComputeSchedulingMetric (RadioBearer *bearer, double 
   else
     {
 
-     QoSForEXP *qos = (QoSForEXP*) bearer->GetQoSParameters ();
+     QoSForMOHAPF *qos = (QoSForMOHAPF*) bearer->GetQoSParameters ();
 
 	 double HOL = bearer->GetHeadOfLinePacketDelay ();
 	 double maxdelay = qos->GetMaxDelay ();
      double alfa = -log10(qos->GetDropProbability()) / maxdelay;
 
 	 metric = exp ( maxdelay /
-					 (maxdelay - HOL) )
+					(maxdelay - HOL) )
 	            *
 	            alfa
 	            *
