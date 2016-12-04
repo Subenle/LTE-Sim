@@ -51,7 +51,7 @@
 #include <stdlib.h>
 #include <cstring>
 #include <math.h>
-
+#include <ctime>
 
 static void ScalabilityTestMacroWithFemto (double radius,
 								           int nbBuildings,

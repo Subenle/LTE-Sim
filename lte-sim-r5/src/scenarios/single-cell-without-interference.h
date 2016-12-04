@@ -48,7 +48,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
-
+#include <ctime>
 
 static void SingleCellWithoutInterference (double radius,
                                            int nbUE,

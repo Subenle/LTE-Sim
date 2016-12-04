@@ -50,7 +50,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
-
+#include <ctime>
 
 static void SingleCellWithFemto (double radius, int nbBuildings, int buildingType, double activityRatio,
                        int nbUE, int nbFemtoUE,

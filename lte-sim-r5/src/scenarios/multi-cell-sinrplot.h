@@ -49,6 +49,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
+#include <ctime>
 using namespace std;
 
 static void MultiCellSinrPlot (int nbCell, double radius,

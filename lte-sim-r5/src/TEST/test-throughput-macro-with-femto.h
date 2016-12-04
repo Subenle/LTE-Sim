@@ -51,7 +51,7 @@
 #include <stdlib.h>
 #include <cstring>
 #include <math.h>
-
+#include <ctime>
 
 static void TestThroughputMacroWithFemto (double radius,
 								          int nbBuildings,

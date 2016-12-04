@@ -50,7 +50,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
-
+#include <ctime>
 
 static void SingleCellWithStreets ( double radius, int nbStreets,
                        int nbUE, int nbFemtoUE,

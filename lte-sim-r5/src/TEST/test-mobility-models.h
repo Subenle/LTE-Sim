@@ -47,7 +47,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
-
+#include <ctime>
 /*
 * ENABLE IN load-parameters.h:
 * #define PLOT_USER_POSITION

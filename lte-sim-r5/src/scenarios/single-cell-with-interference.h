@@ -48,7 +48,7 @@
 #include <stdlib.h>
 #include <cstring>
 #include <iostream>
-
+#include <ctime>
 static void SingleCellWithInterference (int nbCells, double radius,
                                         int nbUE,
                                         int nbVoIP, int nbVideo, int nbBE, int nbCBR,

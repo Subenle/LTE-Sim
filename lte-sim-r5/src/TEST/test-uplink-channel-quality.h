@@ -38,6 +38,7 @@
 #include "../channel/propagation-model/propagation-loss-model.h"
 #include "../protocolStack/mac/packet-scheduler/mt-uplink-packet-scheduler.h"
 #include "../componentManagers/FlowsManager.h"
+#include <ctime>
 
 static void TestUplinkChannelQuality ()
 {

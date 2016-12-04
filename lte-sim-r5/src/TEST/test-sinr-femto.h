@@ -50,7 +50,7 @@
 #include <stdlib.h>
 #include <cstring>
 #include <math.h>
-
+#include <ctime>
 
 static void TestSinrFemto (int riuso, double activityFactor)
 {

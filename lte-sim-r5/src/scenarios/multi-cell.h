@@ -47,7 +47,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
-
+#include <ctime>
 
 static void MultiCell (int nbCell, double radius,
                        int nbUE,
