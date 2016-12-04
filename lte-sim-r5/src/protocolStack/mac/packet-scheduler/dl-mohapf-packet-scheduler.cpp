@@ -57,7 +57,6 @@ DL_MOHAPF_PacketScheduler::DoSchedule ()
   UpdateAverageTransmissionRate ();
   CheckForDLDropPackets ();
   SelectFlowsToSchedule ();
-  ComputeAW ();
 
   if (GetFlowsToSchedule ()->size() == 0)
 	{}
