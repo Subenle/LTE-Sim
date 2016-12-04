@@ -19,7 +19,7 @@ FILE="Sim"   #OUTPUT FILE NAME // put here whatever you want
 NUMSIM=5  #Number of simulations // how many simulations are you gonna make for each scanario and each algoritm, in this case 5
 FILENAME="Video_BE_VOIP"   # SIMULATION TYPE NAME // here you can use put the type of simulation you make, for example if you wanna make a simulation of video flow, best effort flows, and voip flows, call it 'video_be_voip'.
 COUNT=1 // dont touch this!
-CELS=1       # NUMBER OF CELLS // Dont touch this!
+CELS=3       # NUMBER OF CELLS // Dont touch this!-SBL think it can be changed.
 TOTALNAME="" // Dont touch this!
 
 # here you shoul set your range of users for the simulations, in this case the simulations will be made for 5, 10, 15, and 20 users. (it starts in 5 users, the interval is 5 users until 20 users)

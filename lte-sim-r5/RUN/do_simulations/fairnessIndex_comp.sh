@@ -41,7 +41,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp >>tmp_2
 	done 
-	/usr/local/home/miturral/LTE-Sim/src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
@@ -60,7 +60,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp  >>tmp_2
 	done 
-	/usr/local/home/miturral/LTE-Sim/src/Simulations/TOOLS/./make_fairness_index  tmp_2  >> temporal
+	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2  >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
@@ -79,13 +79,33 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp >>tmp_2
 	done 
-	/usr/local/home/miturral/LTE-Sim/src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
 	done
 	grep "FI" temporal  | awk '{print $2}'  > temporal2
 	./compute_average.sh temporal2 | awk '{print "'$NBUE' "$1}' >> EXPPF_Y1_$8_$7.dat 
+	COUNT=1
+	rm temporal
+	rm temporal2
+
+		# GRAPHIC FOR MOHAPF
+	until [ $COUNT -gt $NUMSIM ]; do
+	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_MOHAPF_"$NBUE"U"$CELS"C"".sim"
+
+		for bearer in $(seq 0 1 $(( ${NBUE}- 1 )))
+	do 
+        grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
+      ./compute_throughput.sh tmp >>tmp_2
+	done 
+	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	rm tmp
+	rm tmp_2
+	 let COUNT=COUNT+1
+	done
+	grep "FI" temporal  | awk '{print $2}'  > temporal2
+ 	./compute_average.sh temporal2 | awk '{print "'$NBUE' "$1}' >> MOHAPF_Y1_$8_$7.dat 
 	COUNT=1
 	rm temporal
 	rm temporal2
@@ -105,12 +125,16 @@ echo Users Value  >> results_$8_$7.ods
 echo EXP-PF  >> results_$8_$7.ods
 echo Users Value  >> results_$8_$7.ods
 	grep  " " EXPPF_Y1_$8_$7.dat  >> results_$8_$7.ods
+echo MOHAPF  >> results_$8_$7.ods
+echo Users Value  >> results_$8_$7.ods
+    grep  " " MOHAPF_Y1_$8_$7.dat  >> results_$8_$7.ods
 
-./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat $7-Fairness-Index Users Fairness Index
+./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat MOHAPF_Y1_$8_$7.dat $7-Fairness-Index Users Fairness Index
 
 rm PF_Y1_$8_$7.dat 
 rm MLWDF_Y1_$8_$7.dat 
 rm EXPPF_Y1_$8_$7.dat 
+rm MOHAPF_Y1_$8_$7.dat 
 echo  FAIRNESS $7 REPORT FINISHED!! 
 
 

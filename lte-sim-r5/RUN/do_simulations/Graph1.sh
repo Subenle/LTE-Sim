@@ -16,6 +16,9 @@
 # Author: Mauricio Iturralde <mauricio.iturralde@irit.fr, mauro@miturralde.com>
 
 #inputs  1 output name, 2 PF file name, 3 MLWDF file name, 4 EXP/PF file name, 5 Title, 6 x label, 7 Y label
+# --Following is writed by sbl
+#inputs  1 output name, 2 PF file name, 3 MLWDF file name, 4 EXP/PF file name, 5 MOHAPF file name, 6 Title, 7 x label, 8 Y label
+
 filename=.temp3.data
 # echo "set terminal svg size 600,400 dynamic enhanced fname 'arial'  fsize 11 butt solid" >> plot.gnu
 # echo "set terminal svg size 600,400" >> plot.gnu
@@ -30,14 +33,14 @@ filename=.temp3.data
  #echo "set boxwidth 0.5 absolute" >> $filename
  echo "set style fill solid 1.0 noborder" >> $filename
  echo "set key inside right" >> $filename
- echo "set xlabel \"$6\"" >> $filename
- echo "set ylabel \"$7\"" >> $filename
+ echo "set xlabel \"$7\"" >> $filename
+ echo "set ylabel \"$8\"" >> $filename
   
  #echo  "set format y \"%.0t*10^%+03T\"" >> $filename #Pour le PLR
 
- echo "set title \"$5\"" >> $filename
+ echo "set title \"$6\"" >> $filename
  #echo "set yrange [ *:* ] noreverse nowriteback" >> $filename
  #echo "set xrange [ *:* ] noreverse nowriteback" >> $filename
- echo "plot  '$2' using 2:xtic(1) title 'PF', '$3' using 2:xtic(1) title 'MLWDF', '$4' using 2:xtic(1) title 'EXP/PF'" >>$filename
+ echo "plot  '$2' using 2:xtic(1) title 'PF', '$3' using 2:xtic(1) title 'MLWDF', '$4' using 2:xtic(1) title 'EXP/PF', , '$5' using 2:xtic(1) title 'MOHAPF'" >>$filename
 gnuplot $filename
 rm -Rf $filename

@@ -36,11 +36,15 @@ NBVOIP=1  # Number of Voip Flows
 NBVIDEO=1 #Number of Video
 NBBE=1 # Number of Best Effort Flows
 NBCBR=0 #Number of CBR flows
-#Scheduler Type PF=1, MLWDF=2 EXP= 3
+#Scheduler Type PF=1, MLWDF=2 EXP= 3 MOHAPF=7
 FRAME_STRUCT=1  # FDD or TDD
 SPEED=3 #User speed 
 MAXDELAY=0.1
 VIDEOBITRATE=242
+
+# NOT Creat New Folders for each Sim
+# OFILES=`date +%y%m%d-%H%M`
+# mkdir $OFILES
 
 NBUE=$MINUSERS
 until [ $NBUE -gt $MAXUSERS ]; do
@@ -50,7 +54,6 @@ until [ $NBUE -gt $MAXUSERS ]; do
 	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_PF_"$NBUE"U"$CELS"C"".sim"
 	../../LTE-Sim SingleCellWithI $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR 1 $FRAME_STRUCT $SPEED $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME
         	echo FILE $TOTALNAME CREATED!
-
  	let COUNT=COUNT+1
 	done
 	COUNT=1
@@ -59,7 +62,7 @@ until [ $NBUE -gt $MAXUSERS ]; do
        	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_MLWDF_"$NBUE"U"$CELS"C"".sim"
 	../../LTE-Sim SingleCellWithI $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR 2 $FRAME_STRUCT $SPEED $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME
        	echo FILE $TOTALNAME CREATED!
-	 let COUNT=COUNT+1
+	let COUNT=COUNT+1
 	done
 	COUNT=1
 
@@ -70,6 +73,17 @@ until [ $NBUE -gt $MAXUSERS ]; do
  	let COUNT=COUNT+1
 	done
 	COUNT=1
+
+	until [ $COUNT -gt $NUMSIM ]; do
+	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_MOHAPF_"$NBUE"U"$CELS"C"".sim"
+	../../LTE-Sim SingleCellWithI $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR 7 $FRAME_STRUCT $SPEED $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME
+        	echo FILE $TOTALNAME CREATED!
+
+ 	let COUNT=COUNT+1
+	done
+	COUNT=1
+
+
 let NBUE=NBUE+INTERVAL
 done
 echo SIMULATION FINISHED!

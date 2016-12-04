@@ -67,6 +67,19 @@ grep "RX "$7   $TOTALNAME  | grep "D" | awk '{print $14}'  > tmp
 ./compute_average.sh temporal | awk '{print "'$NBUE' "$1}' >> EXPPF_Y1_$8_$7.dat 
 	COUNT=1
 	rm temporal
+
+	# GRAPHIC FOR MOHAPF	
+	until [ $COUNT -gt $NUMSIM ]; do
+	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_MOHAPF_"$NBUE"U"$CELS"C"".sim"
+grep "RX "$7   $TOTALNAME  | grep "D" | awk '{print $14}'  > tmp
+		
+	./compute_delay.sh tmp   >> temporal
+	rm tmp
+	 let COUNT=COUNT+1
+	done
+	./compute_average.sh temporal | awk '{print "'$NBUE' "$1}' >> MOHAPF_Y1_$8_$7.dat 
+	COUNT=1
+	rm temporal
 #START ANOTHER ALGORITHM
 #
 #-----> Add code here
@@ -83,12 +96,16 @@ echo Users Value  >> results_$8_$7.ods
 echo EXP-PF  >> results_$8_$7.ods
 echo Users Value  >> results_$8_$7.ods
 	grep  " " EXPPF_Y1_$8_$7.dat  >> results_$8_$7.ods
+echo MOHAPF  >> results_$8_$7.ods
+echo Users Value  >> results_$8_$7.ods
+	grep  " " MOHAPF_Y1_$8_$7.dat  >> results_$8_$7.ods
 
-./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat $7-Delay Users Delay[Sec]
+./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat MOHAPF_Y1_$8_$7.dat $7-Delay Users Delay[Sec]
 
 rm PF_Y1_$8_$7.dat 
 rm MLWDF_Y1_$8_$7.dat 
 rm EXPPF_Y1_$8_$7.dat 
+rm MOHAPF_Y1_$8_$7.dat 
 
 echo  Delay $7 REPORT FINISHED!! 
 

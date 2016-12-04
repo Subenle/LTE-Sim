@@ -71,7 +71,28 @@ until [ $NBUE -gt $2 ]; do
 	./compute_average.sh temporal | awk '{print "'$NBUE' "$1}' >> EXPPF_Y1_$8_$7.dat 
 	COUNT=1
 	rm temporal
-	 let NBUE=NBUE+$3
+
+	# GRAPHIC FOR MOHAPF
+	
+	until [ $COUNT -gt $NUMSIM ]; do
+	TOTALNAME=$FILE"_"$COUNT"_"$FILENAME"_MOHAPF_"$NBUE"U"$CELS"C"".sim"
+	grep "RX "$7   $TOTALNAME  | awk '{print $1}'  > tmp
+	grep "TX "$7   $TOTALNAME  | awk '{print $1}'  >> tmp
+	./compute_plr.sh tmp >> temporal
+	rm tmp
+	 let COUNT=COUNT+1
+	done
+	./compute_average.sh temporal | awk '{print "'$NBUE' "$1}' >> MOHAPF_Y1_$8_$7.dat 
+	COUNT=1
+	rm temporal
+
+#START ANOTHER ALGORITHM
+#
+#-----> Add code here
+#
+#END ANOTHER ALGORITHM
+
+	let NBUE=NBUE+$3
 done
 
 echo PF  >> results_$8_$7.ods
@@ -83,12 +104,16 @@ echo Users Value  >> results_$8_$7.ods
 echo EXP-PF  >> results_$8_$7.ods
 echo Users Value  >> results_$8_$7.ods
 	grep  " " EXPPF_Y1_$8_$7.dat  >> results_$8_$7.ods
+echo MOHAPF  >> results_$8_$7.ods
+echo Users Value  >> results_$8_$7.ods
+	grep  " " MOHAPF_Y1_$8_$7.dat  >> results_$8_$7.ods
 
-./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat $7-Packet-Loss-Ratio Users PLR
+./Graph1.sh $7_$8 PF_Y1_$8_$7.dat MLWDF_Y1_$8_$7.dat EXPPF_Y1_$8_$7.dat MOHAPF_Y1_$8_$7.dat $7-Packet-Loss-Ratio Users PLR
 
 rm PF_Y1_$8_$7.dat 
 rm MLWDF_Y1_$8_$7.dat 
 rm EXPPF_Y1_$8_$7.dat 
+rm MOHAPF_Y1_$8_$7.dat 
 echo  PLR REPORT FINISHED!! 
 
 
