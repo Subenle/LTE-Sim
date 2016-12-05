@@ -27,7 +27,7 @@ TOTALNAME=""
 NBUE=$1 #Number of UE's
 # variables for values
 
-time=120
+#time=120
 
 until [ $NBUE -gt $2 ]; do
 
@@ -41,7 +41,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp >>tmp_2
 	done 
-	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	/home/subenle/Documents/lte-sim-r5-moha/TOOLS/./make_fairness_index  tmp_2 >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
@@ -60,7 +60,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp  >>tmp_2
 	done 
-	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2  >> temporal
+	/home/subenle/Documents/lte-sim-r5-moha/TOOLS/./make_fairness_index  tmp_2  >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
@@ -79,7 +79,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp >>tmp_2
 	done 
-	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	/home/subenle/Documents/lte-sim-r5-moha/TOOLS/./make_fairness_index  tmp_2 >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
@@ -99,7 +99,7 @@ until [ $NBUE -gt $2 ]; do
         grep "RX "$7   $TOTALNAME  | grep "B ${bearer} " |  awk '{print $8}'  > tmp
       ./compute_throughput.sh tmp >>tmp_2
 	done 
-	../../src/Simulations/TOOLS/./make_fairness_index  tmp_2 >> temporal
+	/home/subenle/Documents/lte-sim-r5-moha/TOOLS/./make_fairness_index  tmp_2 >> temporal
 	rm tmp
 	rm tmp_2
 	 let COUNT=COUNT+1
