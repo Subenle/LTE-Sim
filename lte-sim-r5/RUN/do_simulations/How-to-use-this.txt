@@ -2,8 +2,8 @@ Hi folks,
 
 This is just an example to show how to compute LTE-Sim results and how to get a graphic. (This is what I use, so I share this to you just to give you an idea how to compute results.)
 There are 14 shells (files.sh).
-The main file is doSim1.sh. Is in this file where you must set all the parameters of your simulation.
-This file is made to make simulations using ONLY these algorithms PF, EXP/PF, and M-LWDF. 
+The main file is doSim1.sh. It's in this file where you must set all the parameters of your simulation.
+This file is made to make simulations using ONLY these algorithms PF, EXP/PF, and M-LWDF. New algorithms can be added.
 What doSim1.sh does, is making several simulations for each scenario and then it gets the simulations average, and finally it makes a graphic. This rutine is made only to use, "SingleCellWithInterference" scenario.
 
 You should install "gnu plot" in your sistem to see the graphics. I use ubuntu for my simulations, so this was only tested in ubuntu.
