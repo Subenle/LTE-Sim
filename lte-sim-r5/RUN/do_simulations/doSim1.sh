@@ -19,7 +19,7 @@
 # Single Cell With Interference
 
 FILE="Sim"   #OUTPUT FILE NAME
-NUMSIM=5  #Number of simulations
+NUMSIM=2  #Number of simulations
 FILENAME="Sig-I"   # SIMULATION TYPE NAME
 COUNT=1
 CELS=1       # NUMBER OF CELLS

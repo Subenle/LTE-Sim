@@ -15,6 +15,6 @@
 #
 # Author: Mauricio Iturralde <mauricio.iturralde@irit.fr, mauro@miturralde.com>
 
-awk 'BEGIN {s=0; TIME=150; TOTAL=0; }
+awk 'BEGIN {s=0; TIME=120; TOTAL=0; }
 {s+=$1; } {TOTAL=s*8/TIME} 
 	END {printf "%4.5f\n", TOTAL/10000000}' $1

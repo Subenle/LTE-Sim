@@ -41,6 +41,6 @@ filename=.temp3.data
  echo "set title \"$6\"" >> $filename
  #echo "set yrange [ *:* ] noreverse nowriteback" >> $filename
  #echo "set xrange [ *:* ] noreverse nowriteback" >> $filename
- echo "plot  '$2' using 2:xtic(1) title 'PF', '$3' using 2:xtic(1) title 'MLWDF', '$4' using 2:xtic(1) title 'EXP/PF', , '$5' using 2:xtic(1) title 'MOHAPF'" >>$filename
+ echo "plot  '$2' using 2:xtic(1) title 'PF', '$3' using 2:xtic(1) title 'MLWDF', '$4' using 2:xtic(1) title 'EXP/PF', '$5' using 2:xtic(1) title 'MOHAPF'" >>$filename
 gnuplot $filename
 rm -Rf $filename
