@@ -19,7 +19,7 @@ FILE="Sim"   #OUTPUT FILE NAME // put here whatever you want
 NUMSIM=5  #Number of simulations // how many simulations are you gonna make for each scanario and each algoritm, in this case 5
 FILENAME="Video_BE_VOIP"   # SIMULATION TYPE NAME // here you can use put the type of simulation you make, for example if you wanna make a simulation of video flow, best effort flows, and voip flows, call it 'video_be_voip'.
 COUNT=1 // dont touch this!
-CELS=3       # NUMBER OF CELLS // Dont touch this!-SBL think it can be changed.
+CELS=1       # NUMBER OF CELLS // Dont touch this!-if changed，many files should be changed.
 TOTALNAME="" // Dont touch this!
 
 # here you shoul set your range of users for the simulations, in this case the simulations will be made for 5, 10, 15, and 20 users. (it starts in 5 users, the interval is 5 users until 20 users)
@@ -42,8 +42,8 @@ MAXDELAY=0.1
 VIDEOBITRATE=242
 
 
-At eh end of LTE Sim you will see this:
-Here doSim1.sh calls other sells to caopute results and make the graphics.
+At the end of LTE Sim you will see this:
+Here doSim1.sh calls other shells to compute results and make the graphics.
 The only thing you must change is the parameter 7, and 8.
 param 7 is the type of flow, VIDEO, CBR, INF_BUF or VOIP (this is the trace output format).
 param 8 is the name of the graphic you want to set.
@@ -68,7 +68,7 @@ In this example there is 3 type of flows I used VIDEO, VOIP, and INF_BUF because
 3. In doSim1.sh you will see this path. "/usr/local/home/miturral/LTE-Sim/./LTE-Sim SingleCellWithI" this is my path, change it for yours (where you have LTE Sim.)
 	3.1 In all files search  this "/usr/local/home/miturral/LTE-Sim/src/Simulations/TOOLS/", this is MY PATH, change it for yours.
 
-4. In the fllow files compute-thoughput.sh, compute_spectral_efficiency.sh, fairnessIndex_comp.sh, spectral_efficiency_comp.sh, throughput_comp "TIME" is setted with 120 or 150, change this value for for the time of your simulation that is set in "single-cell-with-interference.h" in LTE-Sim.
+4. In the follow files compute-thoughput.sh, compute_spectral_efficiency.sh, fairnessIndex_comp.sh, spectral_efficiency_comp.sh, throughput_comp "TIME" is setted with 120 or 150, change this value for the time of your simulation that is set in "single-cell-with-interference.h" in LTE-Sim.
 
 5. give permissions to all shells using % chmod 777  shell_name.sh.
 
@@ -77,7 +77,7 @@ In this example there is 3 type of flows I used VIDEO, VOIP, and INF_BUF because
 7. Go for a coffe, cause these simulations will take a while.
 
 
-If you need help just send me a mail, mauricio.iturralde@irit.fr maybe I mised something. You can write in english spanish or french ;).
+If you need help just send me a mail, mauricio.iturralde@irit.fr maybe I missed something. You can write in english spanish or french ;).
 
 Good luck!
 
